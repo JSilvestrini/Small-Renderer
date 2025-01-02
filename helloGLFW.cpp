@@ -5,6 +5,7 @@
 #include "glad.h"
 #include <iostream>
 #include "Sphere.h"
+#include "Plane.h"
 
 using std::cout, std::endl;
 

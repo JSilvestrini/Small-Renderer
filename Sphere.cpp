@@ -1,10 +1,6 @@
 #include "Sphere.h"
 
-Sphere::Sphere() noexcept : Shape() {
-    // center, radius, kd, ks, ka, km, n
-    center = glm::vec3(0.0f, 0.0f, 0.0f);
-    radius = glm::vec3(0.0f, 0.0f, 0.0f);
-}
+Sphere::Sphere() noexcept : Shape(), center(glm::vec3()), radius(glm::vec3()) {}
 
 Sphere::Sphere(glm::vec3 center, glm::vec3 radius) noexcept : Shape(), center(center), radius(radius) {}
 
@@ -13,15 +9,9 @@ Sphere::Sphere(glm::vec3 Ka, glm::vec3 Kd, glm::vec3 Ks, glm::vec3 Km, float n, 
     center(center),
     radius(radius) {}
 
-Sphere::Sphere(const Sphere& sphere) noexcept : Shape(sphere) {
-    this->center = sphere.center;
-    this->radius = sphere.radius;
-}
+Sphere::Sphere(const Sphere& sphere) noexcept : Shape(sphere), center(sphere.center), radius(sphere.radius) {}
 
-Sphere::Sphere(Sphere&& sphere) noexcept : Shape(sphere) {
-    this->center = std::move(sphere.center);
-    this->radius = std::move(sphere.radius);
-
+Sphere::Sphere(Sphere&& sphere) noexcept : Shape(sphere), center(std::move(sphere.center)), radius(std::move(sphere.radius)) {
     sphere.center = glm::vec3();
     sphere.radius = glm::vec3();
 }
@@ -62,7 +52,6 @@ glm::vec3 Sphere::getCenter() const noexcept { return this->center; }
 glm::vec3 Sphere::getRadius() const noexcept { return this->radius; }
 
 glm::vec3 Sphere::getNormal(const glm::vec3& point) const {
-    // return the direction from the center to the point
     return glm::normalize((point - this->center));
 }
 

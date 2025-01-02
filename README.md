@@ -1,0 +1,1 @@
+clang++ -std=c++17 -stdlib=libc++ -I/opt/homebrew/Cellar/glm/1.0.1/include/glm -L/opt/homebrew/Cellar/glm/1.0.1/lib -lglm -I/opt/homebrew/Cellar/glfw/3.4/include -L/opt/homebrew/Cellar/glfw/3.4/lib -lglfw3 -framework CoreVideo -framework OpenGL -framework IOKit -framework Cocoa -framework Carbon helloGLFW.cpp glad.c Shape.cpp Sphere.cpp
